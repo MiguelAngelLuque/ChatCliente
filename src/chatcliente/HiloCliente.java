@@ -12,26 +12,27 @@ import java.net.Socket;
  *
  * @author admin
  */
-public class HiloCliente implements Runnable{
+public class HiloCliente implements Runnable {
+
     Socket socketDatos;
-    HiloCliente(Socket socketConectado){
-    socketDatos = socketConectado;
+
+    HiloCliente(Socket socketConectado) {
+        socketDatos = socketConectado;
     }
-    
-    public void run(){
-        
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(socketDatos.getInputStream()));
-            while(true){
+
+    public void run() {
+
+        while (true) {
+            try {
+                System.out.println("Estoy Escuchando");
+                BufferedReader br = new BufferedReader(new InputStreamReader(socketDatos.getInputStream()));
                 String r = br.readLine();
                 System.out.println("Respuesta: " + r);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
-        
-    
+
     }
-    
-    
+
 }

@@ -51,7 +51,7 @@ public class Chat extends javax.swing.JFrame {
             hilo = new Thread(new HiloCliente(socketDatosA));
             hilo.start();
             String login = LOGINP(usuario);
-            System.out.println(login);
+            //System.out.println(login);
             PrintWriter output = new PrintWriter(new OutputStreamWriter(socketDatosA.getOutputStream()));
             output.println(login);
             output.flush();
@@ -173,17 +173,17 @@ public class Chat extends javax.swing.JFrame {
         String mensaje = EnviarText.getText();
         if(!mensaje.equals("Escriba su mensaje...") && !mensaje.equals("") && !mensaje.contains(";")){
             int index = Usuarios.getSelectedIndex();
-            System.out.println(index);
-            chatBox.append(mensaje+"\n");
+            //System.out.println(index);
+            chatBox.append(usuario + ": " + mensaje+"\n");
             if(index == 0 || index == -1){
                 //Chat Global
-                System.out.println("CHAT GLOBAL");
+                //System.out.println("CHAT GLOBAL");
                 enviar = MSGGLBP(usuario, mensaje);
-                System.out.println(enviar);
+                //System.out.println(enviar);
                 
             } else {
                 //Chat Pesonal
-                System.out.println("CHAT PERSONAL A " + Usuarios.getSelectedValue());
+                //System.out.println("CHAT PERSONAL A " + Usuarios.getSelectedValue());
                 enviar = MSGPRVP(usuario, Usuarios.getSelectedValue(), mensaje);
             }
             try {
@@ -309,8 +309,14 @@ public class Chat extends javax.swing.JFrame {
         chatBox.append(s+"\n");
     }
     
-    public void enviarDatos(){
-        
+    public void enviarDatosAlServer(String enviar){
+        try {
+            PrintWriter output = new PrintWriter(new OutputStreamWriter(socketDatosA.getOutputStream()));
+            output.println(enviar);
+            output.flush();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
