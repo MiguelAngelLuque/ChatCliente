@@ -21,17 +21,6 @@ public class HiloCliente implements Runnable {
     }
 
     public void run() {
-<<<<<<< HEAD
-        try{
-        DataInputStream br = new DataInputStream(socketDatos.getInputStream());
-        while (true) {
-                System.out.println("Estoy Escuchando");
-                String r = br.readUTF();
-                System.out.println("Respuesta: " + r);
-            
-        }
-        } catch (Exception ex) {
-=======
         try {
             while (true) {
                 DataInputStream br = new DataInputStream(socketDatos.getInputStream());
@@ -40,7 +29,6 @@ public class HiloCliente implements Runnable {
             }
         }
          catch (Exception ex) {
->>>>>>> 9d2d856ae3cc5824007e9b42effc12a73476854f
             ex.printStackTrace();
         }
 
