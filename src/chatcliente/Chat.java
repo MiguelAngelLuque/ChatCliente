@@ -52,9 +52,7 @@ public class Chat extends javax.swing.JFrame {
             hilo.start();
             String login = LOGINP(usuario);
             //System.out.println(login);
-            PrintWriter output = new PrintWriter(new OutputStreamWriter(socketDatosA.getOutputStream()));
-            output.println(login);
-            output.flush();
+            enviarDatosAlServer(login);
                 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -186,13 +184,7 @@ public class Chat extends javax.swing.JFrame {
                 //System.out.println("CHAT PERSONAL A " + Usuarios.getSelectedValue());
                 enviar = MSGPRVP(usuario, Usuarios.getSelectedValue(), mensaje);
             }
-            try {
-                PrintWriter output = new PrintWriter(new OutputStreamWriter(socketDatosA.getOutputStream()));
-                output.println(enviar);
-                output.flush();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            enviarDatosAlServer(enviar);
         } else {
             JOptionPane.showMessageDialog(null, "Formato incorrecto.");
         }
@@ -215,8 +207,7 @@ public class Chat extends javax.swing.JFrame {
         try {
             String fin = LOGOUTP(usuario);
             socketDatosA.close();
-            
-            
+            enviarDatosAlServer(fin);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
