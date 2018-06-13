@@ -27,7 +27,7 @@ public class Chat extends javax.swing.JFrame {
     Integer puerto_B;
     String usuario;
     Socket socketDatosA;
-    Thread hilo;
+    //Thread hilo;
     //ArrayList<String> users = new ArrayList<>();
     DefaultListModel<String> users = new DefaultListModel<>();
 
@@ -48,7 +48,7 @@ public class Chat extends javax.swing.JFrame {
             dirIP_B = InetAddress.getByName("10.152.164.38");
             puerto_B = 6000;
             socketDatosA = new Socket(dirIP_B, puerto_B);
-            hilo = new Thread(new HiloCliente(socketDatosA));
+            Thread hilo = new Thread(new HiloCliente(socketDatosA));
             hilo.start();
             String login = LOGINP(usuario);
             //System.out.println(login);
