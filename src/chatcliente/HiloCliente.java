@@ -23,12 +23,12 @@ public class HiloCliente implements Runnable {
     public void run() {
         try{
         BufferedReader br = new BufferedReader(new InputStreamReader(socketDatos.getInputStream()));
-        while (true) {
+        //while (true) {
                 System.out.println("Estoy Escuchando");
                 String r = br.readLine();
                 System.out.println("Respuesta: " + r);
             
-        }
+        //}
         } catch (Exception ex) {
             ex.printStackTrace();
         }
