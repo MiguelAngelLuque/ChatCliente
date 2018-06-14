@@ -31,15 +31,12 @@ public class HiloCliente implements Runnable {
                 String[] rs = r.split(";");
                 switch(rs[0]){
                     case "1":
+                    case "2":
                         String f = rs[1];
                         f = f.replace("[", "");
                         f = f.replace("]", "");
                         f = f.replace(" ", "");
-                        System.out.println(f);
                         cht.actualizarLista(f);
-                        break;
-                    case "2":
-                        
                         break;
                     case "3":
                         //Global
