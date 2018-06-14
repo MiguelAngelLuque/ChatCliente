@@ -172,7 +172,7 @@ public class Chat extends javax.swing.JFrame {
         if(!mensaje.equals("Escriba su mensaje...") && !mensaje.equals("") && !mensaje.contains(";")){
             int index = Usuarios.getSelectedIndex();
             //System.out.println(index);
-            chatBox.append(usuario + ": " + mensaje+"\n");
+            //chatBox.append(usuario + ": " + mensaje+"\n");
             if(index == 0 || index == -1){
                 //Chat Global
                 //System.out.println("CHAT GLOBAL");
@@ -206,8 +206,8 @@ public class Chat extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Hasta luego " + usuario);
         try {
             String fin = LOGOUTP(usuario);
-            socketDatosA.close();
             enviarDatosAlServer(fin);
+            socketDatosA.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

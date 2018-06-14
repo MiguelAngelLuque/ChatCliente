@@ -42,7 +42,9 @@ public class HiloCliente implements Runnable {
                         
                         break;
                     case "3":
-                        
+                        //Global
+                        String f2 = rs[1] + ": " + rs[2];
+                        cht.actChat(f2);
                         break;
                 }
             }
