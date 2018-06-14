@@ -48,7 +48,7 @@ public class Chat extends javax.swing.JFrame {
             dirIP_B = InetAddress.getByName("10.152.164.38");
             puerto_B = 6000;
             socketDatosA = new Socket(dirIP_B, puerto_B);
-            Thread hilo = new Thread(new HiloCliente(socketDatosA));
+            Thread hilo = new Thread(new HiloCliente(socketDatosA, this));
             hilo.start();
             String login = LOGINP(usuario);
             //System.out.println(login);
@@ -284,7 +284,8 @@ public class Chat extends javax.swing.JFrame {
         String[] usdl = usrs.split(",");
         users.clear();
         users.addElement("<Global>");
-        for(String s : usdl){
+        for(int i = 0; i < usdl.length; i++){
+            String s = usdl[i];
             if(!s.equals(usuario)){
                 users.addElement(s);
             }

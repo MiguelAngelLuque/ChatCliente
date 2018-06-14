@@ -15,17 +15,36 @@ import java.net.Socket;
 public class HiloCliente implements Runnable {
 
     Socket socketDatos;
+    Chat cht;
 
-    HiloCliente(Socket socketConectado) {
+    HiloCliente(Socket socketConectado, Chat cht) {
         socketDatos = socketConectado;
+        this.cht = cht;
     }
 
     public void run() {
         try {
             while (true) {
                 DataInputStream br = new DataInputStream(socketDatos.getInputStream());
-                String r = br.readUTF();
+                String r = /*"[Luque,Alvaro,David]"*/br.readUTF();
                 System.out.println("Respuesta: " + r);
+                String[] rs = r.split(";");
+                switch(rs[0]){
+                    case "1":
+                        String f = rs[1];
+                        f = f.replace("[", "");
+                        f = f.replace("]", "");
+                        f = f.replace(" ", "");
+                        System.out.println(f);
+                        cht.actualizarLista(f);
+                        break;
+                    case "2":
+                        
+                        break;
+                    case "3":
+                        
+                        break;
+                }
             }
         }
          catch (Exception ex) {
